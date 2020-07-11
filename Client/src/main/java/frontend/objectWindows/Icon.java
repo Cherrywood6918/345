@@ -100,7 +100,6 @@ public class Icon extends JComponent implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("нужно: (" + tmpX + ", " + tmpY + ") сейчас: (" + getLocation().x + ", " + getLocation().y + ")");
         if (getLocation().x == tmpX && getLocation().y == tmpY) {
             timer.stop();
             if (tmpY + getSize().height == 0) {
@@ -117,8 +116,6 @@ public class Icon extends JComponent implements ActionListener {
 
 
     private int gcd(int a, int b) {
-        System.out.println(a);
-        System.out.println(b);
         while (b != 0) {
             int tmp = a % b;
             a = b;
@@ -135,23 +132,27 @@ public class Icon extends JComponent implements ActionListener {
         int a = tmpX - getLocation().x;
         int b = tmpY - getLocation().y;
         int k = Math.abs(gcd(a, b));
-        System.out.println(k);
-        int vX = a / k;
-        int vY = b / k;
-
-
-
-        boolean bool = (Math.abs(vX) == 1 || Math.abs(vX) == 0) && (Math.abs(vY) == 1 || Math.abs(vY) == 0);
-        if (bool) {
-            vX = vX * 20;
-            vY = vY * 20;
-            timer.setDelay(25);
+        if(k == 0) {
+            velocityX = 0;
+            velocityY = 0;
         } else {
-            timer.setDelay(50);
+            int vX = a / k;
+            int vY = b / k;
+            boolean bool = (Math.abs(vX) == 1 || Math.abs(vX) == 0) && (Math.abs(vY) == 1 || Math.abs(vY) == 0);
+
+            if (bool) {
+                vX = vX * 20;
+
+                vY = vY * 20;
+
+                timer.setDelay(30);
+            } else {
+                timer.setDelay(58);
+            }
+            velocityX = vX;
+            velocityY = vY;
+            timer.start();
         }
-        velocityX = vX;
-        velocityY = vY;
-        timer.start();
     }
 
 

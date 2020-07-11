@@ -107,6 +107,7 @@ public class OrganizationController {
         } catch (ParseException e) {
 
         }
+        System.out.println(organization);
         if (organization == null) {
             StringBuilder sb = new StringBuilder(bundle.getString("fields") + ": "+ "\n");
             objectCreator.getValidateResults().forEach(s -> sb.append(s + "\n"));

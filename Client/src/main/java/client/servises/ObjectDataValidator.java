@@ -72,7 +72,6 @@ public class ObjectDataValidator {
         boolean flag = true;
         try{
             int res = nf.parse(str).intValue();
-            System.out.println(res);
             if(res <= 0) {
                 flag = false;
             }

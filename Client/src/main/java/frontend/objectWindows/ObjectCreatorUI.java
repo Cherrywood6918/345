@@ -38,7 +38,7 @@ public class ObjectCreatorUI {
                 Double y = setTownY();
                 Double z = setTownZ();
                 String townName = setTownName();
-                town = new Location(x, y, z, name);
+                town = new Location(x, y, z, townName);
             }
             officialAddress = new Address(street, zipCode, town);
         }
